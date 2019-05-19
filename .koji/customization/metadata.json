@@ -1,12 +1,12 @@
 {
   "metadata": {
-    "name": "Koji P5 Scaffold",
-    "short_name": "P5 App",
-    "description": "A React scaffold modified specifically for Koji. Easily customizable at gokoji.com.",
-    "image": "https://images.koji-cdn.com/025a4ca3-2c61-4cf2-b821-55b7023c47dc/kojireact.png",
-    "icon": "https://objects.koji-cdn.com/025a4ca3-2c61-4cf2-b821-55b7023c47dc/94e432a7-951b-4b41-a726-d5d9fc66c533.ico",
-    "icon192": "",
-    "icon512": "",
+    "name": "Asteroid Shooter Template",
+    "short_name": "Asteroid Shooter",
+    "description": "A simple but fun asteroid shooter template.\n\nYou can customize:\n- The ship and its jet flame\n- Up to 6 asteroid types!\n- Laser\n- Life icon\n- Explosion!\n- Sounds!\n- Text and text colors\n- Other game settings\n\n\nHow to play:\n\n-Use ARROW KEYS to move and SPACE to shoot.\n-If you die, you can restart by pressing Enter.\n-You initially have 3 lives. You lose one by getting hit by an asteroid. \n-If you destroy an asteroid, there is a chance that another life spawns, collect it to survive -longer and get more points!\n\nCredits for assets:\n\nLaser sound:\nK.L.Jonasson, Winnipeg, Canada.\nTriki Minut Interactive\nwww.trikiminut.com\n\nhttps://opengameart.org/\n",
+    "image": "https://i.imgur.com/MfPajeT.png",
+    "icon": "https://i.imgur.com/jyfl3aN.png",
+    "icon192": "https://i.imgur.com/p00M1xH.png",
+    "icon512": "https://i.imgur.com/MfPajeT.png",
     "gaCode": ""
   },
   "@@editor": [

@@ -17,6 +17,8 @@ import './index.css';
 Koji.pageLoad();
 window.Koji = Koji;
 
+
+
 require('script-loader!app/index.js');
 new p5();
 

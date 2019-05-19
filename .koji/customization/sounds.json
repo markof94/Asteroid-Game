@@ -1,0 +1,47 @@
+{
+  "sounds": {
+    "backgroundMusic": "https://audio.cdn.gometa.io/eeb2d24d-9da7-432d-843a-8d2ab34d89a9-out.mp3",
+    "matchingSound": "https://audio.cdn.gometa.io/45eb80dd-d339-4d8d-93ff-d27bfc9e81c3-out.mp3",
+    "swappingSound": "https://audio.cdn.gometa.io/29927932-c4a6-4d25-9c43-667e1b580221-out.mp3",
+    "laserSound": "https://objects.koji-cdn.com/8cc3fa74-d3d5-4787-a4bc-c255e2dffc1f/laser.wav",
+    "laserSnd": "https://objects.koji-cdn.com/8cc3fa74-d3d5-4787-a4bc-c255e2dffc1f/laser.wav",
+    "laser2": "https://objects.koji-cdn.com/8cc3fa74-d3d5-4787-a4bc-c255e2dffc1f/media.io_laser.mp3",
+    "explosionSound": "https://objects.koji-cdn.com/8cc3fa74-d3d5-4787-a4bc-c255e2dffc1f/explosion.wav",
+    "lifeSound": "https://objects.koji-cdn.com/8cc3fa74-d3d5-4787-a4bc-c255e2dffc1f/life.wav",
+    "music": "https://objects.koji-cdn.com/8cc3fa74-d3d5-4787-a4bc-c255e2dffc1f/music.mp3"
+  },
+  "@@editor": [
+    {
+      "key": "sounds",
+      "name": "Sounds",
+      "icon": "🔊️",
+      "source": "sounds.json",
+      "fields": [
+        {
+          "key": "laserSnd",
+          "name": "Laser Sound",
+          "description": "Played when you shoot",
+          "type": "sound"
+        },
+        {
+          "key": "explosionSound",
+          "name": "Explosion Sound",
+          "description": "Played when you destroy an asteroid",
+          "type": "sound"
+        },
+        {
+          "key": "lifeSound",
+          "name": "Life Sound",
+          "description": "Played when you collect a life",
+          "type": "sound"
+        },
+        {
+          "key": "music",
+          "name": "Background Music",
+          "description": "Get the atmosphere going!",
+          "type": "sound"
+        }
+      ]
+    }
+  ]
+}

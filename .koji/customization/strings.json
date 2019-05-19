@@ -1,18 +1,89 @@
 {
   "strings": {
-    "content": "Koji P5 Scaffold"
+    "gameOver": "Game Over",
+    "startAgain": "Press Enter to restart.",
+    "newHighScore": "New High Score! :)",
+    "score": "Score:",
+    "scoreEnd": "Score:",
+    "scoreIngame": "",
+    "startingLives": "3",
+    "maxAsteroids": "35",
+    "startingAsteroids": "20",
+    "maxLives": "5",
+    "scoreGain": "3",
+    "lifeChance": "22"
   },
   "@@editor": [
     {
       "key": "strings",
-      "name": "Strings",
+      "name": "Game Settings",
       "icon": "📚",
       "source": "strings.json",
       "fields": [
         {
-          "key": "content",
-          "name": "Page Content",
-          "description": "The text that is displayed on the page",
+          "key": "gameOver",
+          "name": "Game Over",
+          "description": "The text that is displayed when you lose",
+          "type": "text"
+        },
+        {
+          "key": "startAgain",
+          "name": "Start Again",
+          "description": "Instructions for restarting the game",
+          "type": "text"
+        },
+        {
+          "key": "newHighScore",
+          "name": "New High Score",
+          "description": "The text that notifies you when you achieve a new high score",
+          "type": "text"
+        },
+        {
+          "key": "scoreEnd",
+          "name": "Score on game over",
+          "description": "Score label",
+          "type": "text"
+        },
+        {
+          "key": "scoreIngame",
+          "name": "Score in-game",
+          "description": "Score label in-game (empty by default, change if you want)",
+          "type": "text"
+        },
+        {
+          "key": "startingLives",
+          "name": "Starting Lives",
+          "description": "How many lives there are at the start",
+          "type": "text"
+        },
+        {
+          "key": "maxLives",
+          "name": "Maximum Lives",
+          "description": "How many lives can the player have max",
+          "type": "text"
+        },
+        {
+          "key": "lifeChance",
+          "name": "Chance To Spawn Life",
+          "description": "Chance to spawn a life collectible after destroying an asteroid",
+          "type": "text"
+        },
+        {
+          "key": "startingAsteroids",
+          "name": "Starting Asteroids",
+          "description": "How many asteroids there are at the start",
+          "type": "text"
+        },
+        {
+          "key": "maxAsteroids",
+          "name": "Maximum Asteroids",
+          "description": "How many asteroids can there be at once",
+          "type": "text"
+        },
+        {
+          "key": "scoreGain",
+          "name": "Score Gain",
+          "description": "How much score the player gets, multiplied by number of lives",
           "type": "text"
         }
       ]

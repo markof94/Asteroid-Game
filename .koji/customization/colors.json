@@ -1,7 +1,9 @@
 {
   "colors": {
     "backgroundColor": "#3f62ae",
-    "textColor": "#ffffff"
+    "textColor": "#ffffff",
+    "gameOverTextColor": "#ea4a11",
+    "scoreTextColor": "#ffd300"
   },
   "@@editor": [
     {
@@ -12,13 +14,18 @@
       "fields": [
         {
           "key": "textColor",
-          "name": "Text color",
+          "name": "Default Text color",
           "description": "Default color for text",
           "type": "color"
         },
         {
-          "key": "backgroundColor",
-          "name": "Background color",
+          "key": "gameOverTextColor",
+          "name": "Game Over Text Color",
+          "type": "color"
+        },
+        {
+          "key": "scoreTextColor",
+          "name": "Score Text Color",
           "type": "color"
         }
       ]
