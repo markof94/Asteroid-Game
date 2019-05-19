@@ -36,6 +36,9 @@ let invincibilityTimer = 0;
 let score = 0;
 let lives = 3;
 
+let touchPos; //touch position for mobile
+let touching = false;
+
 //===Setup the game at start
 function setup() {
     // make a canvas
@@ -50,6 +53,9 @@ function setup() {
     textFont("Cambria");
     backgroundImage = loadImage(Koji.config.images.backgroundImage);
     lifeImg = loadImage(Koji.config.images.lifeImage);
+    
+    touchPos = createVector(mouseX, mouseY);
+
     
 
     ship = new Ship();
@@ -74,8 +80,12 @@ function draw() {
     //run the timer
     invincibilityTimer -= 1/frameRate(); 
 
+    //update mouse/touch position
 
+    touchPos.x = mouseX;
+    touchPos.y = mouseY;
 
+  
     //===Update all asteroids===//
     for (var i = 0; i < asteroids.length; i++) {
 
@@ -279,6 +289,17 @@ function keyReleased() {
   
 }
 
+
+//===Handle mouse/touch===//
+function touchStarted(){
+    touching = true;
+}
+
+function touchEnded(){
+    touching = false;
+    ship.fireTimer = 0; //reset timer to prevent next shot delay
+}
+
 //===Function for resetting the game
 function init(){
     //center the ship
@@ -342,6 +363,9 @@ function Ship() {
     this.isTurning = false;
     this.isBoosting = false;
 
+    this.fireCooldown = 0.2; //cooldown in seconds when firing with mouse/touch
+    this.fireTimer = 0;
+
     //Load ship images
     this.img = loadImage(Koji.config.images.shipImage);
     this.jetImg = loadImage(Koji.config.images.jetImage);
@@ -366,6 +390,21 @@ function Ship() {
             this.rotation = smoothFactor(this.rotation, this.rotSpeed * this.rotDir, 0.15);
         }else{
             this.rotation = smoothFactor(this.rotation, 0, 0.5);
+        }
+
+
+        //handle mouse/touch controls
+        if(touching && !gameOver){
+            this.instantRotateTo(createVector(mouseX, mouseY));
+            this.boost();
+
+            this.fireTimer -= 1/frameRate();
+            
+            if(this.fireTimer <= 0){
+                lasers.push(new Laser(ship.pos, ship.heading)); //create a new laser at ship position
+                this.fireTimer = this.fireCooldown;
+            }
+            
         }
         
         
@@ -428,6 +467,13 @@ function Ship() {
         this.heading += this.rotation;
         
     
+    }
+
+    //rotate towards position
+    this.instantRotateTo = function(goalPos){
+        let dir = createVector(goalPos.x - this.pos.x, goalPos.y - this.pos.y);
+        
+        this.heading = dir.heading();
     }
 
 }
