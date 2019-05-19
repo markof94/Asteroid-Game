@@ -1,7 +1,7 @@
 {
   "strings": {
     "gameOver": "Game Over",
-    "startAgain": "Press Enter to restart.",
+    "startAgain": "Press Enter or touch to restart.",
     "newHighScore": "New High Score! :)",
     "score": "Score:",
     "scoreEnd": "Score:",

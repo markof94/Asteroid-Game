@@ -293,6 +293,10 @@ function keyReleased() {
 //===Handle mouse/touch===//
 function touchStarted(){
     touching = true;
+
+    if(gameOver){
+        init();
+    }
 }
 
 function touchEnded(){
