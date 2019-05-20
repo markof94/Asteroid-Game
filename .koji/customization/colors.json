@@ -2,8 +2,8 @@
   "colors": {
     "backgroundColor": "#3f62ae",
     "textColor": "#ffffff",
-    "gameOverTextColor": "#ea4a11",
-    "scoreTextColor": "#ffd300"
+    "gameOverTextColor": "#dc0007",
+    "scoreTextColor": "#fff700"
   },
   "@@editor": [
     {

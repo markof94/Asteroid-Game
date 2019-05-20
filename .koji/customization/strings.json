@@ -7,8 +7,8 @@
     "scoreEnd": "Score:",
     "scoreIngame": "",
     "startingLives": "3",
-    "maxAsteroids": "35",
-    "startingAsteroids": "20",
+    "maxAsteroids": "20",
+    "startingAsteroids": "12",
     "maxLives": "5",
     "scoreGain": "3",
     "lifeChance": "22"

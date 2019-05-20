@@ -1,6 +1,6 @@
 {
   "deploy": {
-    "subdomain": "asteroidgame.withkoji.com",
+    "subdomain": "asteroidgametest.withkoji.com",
     "frontend": {
       "output": "frontend/build",
       "commands": [

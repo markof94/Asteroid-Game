@@ -1,18 +1,18 @@
 {
   "images": {
     "mouse": "https://images.koji-cdn.com/76a58d18-9031-4cf9-871c-b4701b0e2537/f4864534-ede5-40e9-ac53-a81df8a25d77.png",
-    "backgroundImage": "https://i.imgur.com/bRtrXL8.png",
-    "shipImage": "https://i.imgur.com/09WDNhu.png",
-    "laserImage": "https://i.imgur.com/CGlx1RC.png",
-    "asteroidImageBig1": "https://i.imgur.com/Ur69LcP.png",
-    "asteroidImageBig2": "https://i.imgur.com/pt18p7c.png",
-    "asteroidImageBig3": "https://i.imgur.com/pdMA8sU.png",
-    "asteroidImageSmall1": "https://i.imgur.com/6xkDJMz.png",
-    "asteroidImageSmall2": "https://i.imgur.com/xVNs2Ey.png",
-    "asteroidImageSmall3": "https://i.imgur.com/bVbzOf6.png",
-    "jetImage": "https://i.imgur.com/E60G8f5.png",
-    "lifeImage": "https://i.imgur.com/3Oro3qs.png",
-    "explosionImage": "https://i.imgur.com/3xGE34a.png"
+    "backgroundImage": "https://i.imgur.com/NhAnBn5.png",
+    "shipImage": "https://i.imgur.com/8x1b2c4.png",
+    "laserImage": "https://i.imgur.com/PJCG4IY.png",
+    "asteroidImageBig1": "https://i.imgur.com/FDsuree.png",
+    "asteroidImageBig2": "https://i.imgur.com/tf4GBdo.png",
+    "asteroidImageBig3": "https://i.imgur.com/nyImJNq.png",
+    "asteroidImageSmall1": "https://i.imgur.com/8hQze4D.png",
+    "asteroidImageSmall2": "https://i.imgur.com/rwOEEkv.png",
+    "asteroidImageSmall3": "https://i.imgur.com/Ka38DPA.png",
+    "jetImage": "https://i.imgur.com/0ppxkn4.png",
+    "lifeImage": "https://i.imgur.com/JQM4QL5.png",
+    "explosionImage": "https://i.imgur.com/HVW21Vf.png"
   },
   "@@editor": [
     {
@@ -42,43 +42,43 @@
         {
           "key": "asteroidImageBig1",
           "name": "Asteroid 1",
-          "description": "Player projectile",
+          "description": "One of the asteroids",
           "type": "image"
         },
         {
           "key": "asteroidImageBig2",
           "name": "Asteroid 2",
-          "description": "Player projectile",
+          "description": "One of the asteroids",
           "type": "image"
         },
         {
           "key": "asteroidImageBig3",
           "name": "Asteroid 3",
-          "description": "Player projectile",
+          "description": "One of the asteroids",
           "type": "image"
         },
         {
           "key": "asteroidImageSmall1",
           "name": "Asteroid Small 1",
-          "description": "Player projectile",
+          "description": "One of the asteroids",
           "type": "image"
         },
         {
           "key": "asteroidImageSmall2",
           "name": "Asteroid Small 2",
-          "description": "Player projectile",
+          "description": "One of the asteroids",
           "type": "image"
         },
         {
           "key": "asteroidImageSmall3",
           "name": "Asteroid Small 3",
-          "description": "Player projectile",
+          "description": "One of the asteroids",
           "type": "image"
         },
         {
           "key": "jetImage",
           "name": "Jet",
-          "description": "Jet that is projected from the ship while the engine is turned on",
+          "description": "Ship booster while moving",
           "type": "image"
         },
         {
@@ -93,7 +93,6 @@
           "description": "Explosion that happens after an object is destroyed",
           "type": "image"
         }
-        
       ]
     }
   ]
