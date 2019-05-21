@@ -81,7 +81,6 @@ function draw() {
     invincibilityTimer -= 1/frameRate(); 
 
     //update mouse/touch position
-
     touchPos.x = mouseX;
     touchPos.y = mouseY;
 
