@@ -120,7 +120,7 @@ function draw() {
     for(var i = 0; i < collectibles.length; i++){
       if(lives < maxLives){
         if (ship.hits(collectibles[i])) {
-            collectibles.splice(i, 1);
+            collectibles.splice(i, 1); //remove the collectible from array
             lives++;
             PlaySound(Koji.config.sounds.lifeSound);
         }
