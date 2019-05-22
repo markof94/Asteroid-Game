@@ -310,9 +310,9 @@ function draw() {
         fill(Koji.config.colors.scoreTextColor);
         textAlign(CENTER);
         if(Koji.config.strings.scoreIngame){
-            text(Koji.config.strings.scoreIngame + " " + score, width / 2, height - 32);
+            text(Koji.config.strings.scoreIngame + " " + score, width / 2, 48);
         }else{
-            text("" + score, width / 2, height - 32);
+            text("" + score, width / 2, 48);
         }
         
     }
