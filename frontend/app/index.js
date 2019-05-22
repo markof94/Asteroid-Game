@@ -15,6 +15,8 @@ let soundEnabled = true;
 let soundButton;
 let playButton;
 
+let canMute = true;
+
 //===Game objects===///
 let ship;
 var lasers = [];
@@ -388,18 +390,19 @@ function touchStarted(){
        
     }
 
-   if(soundButton.checkClick()){
-       toggleSound();
-        
-   }else{
+  
        touching = true;
-   }
+   
 }
 
 function touchEnded(){
     if(touchMode){
-    touching = false;
-    ship.fireTimer = 0; //reset timer to prevent next shot delay
+        touching = false;
+        ship.fireTimer = 0; //reset timer to prevent next shot delay
+    }
+
+    if(soundButton.checkClick()){
+        toggleSound();
     }
    
 }
@@ -921,10 +924,20 @@ function enableSound(){
 }
 
 function toggleSound(){
-    if(soundEnabled){
-        disableSound();
-    }else{
-        enableSound();
+    if(canMute){
+
+        canMute = false;
+        
+        if(soundEnabled){
+            disableSound();
+        }else{
+            enableSound();
+        }
+
+        setTimeout(() => {
+            canMute = true;
+        }, 100);
     }
+    
 
 }
