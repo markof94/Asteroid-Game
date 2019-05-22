@@ -56,6 +56,19 @@ let touchMode = false; //used to prevent input bugs with keyboard
 let gameWidth = window.innerWidth;
 let gameHeight = window.innerHeight;
 
+let myFont;
+
+function preload(){
+
+    var link=document.createElement('link');
+    link.href= Koji.config.strings.fontFamily;
+    link.rel='stylesheet';
+    console.log(link);
+    document.head.appendChild(link);
+    
+    myFont = getFontFamily(Koji.config.strings.fontFamily);
+}
+
 //===Setup the game at start
 function setup() {
     // make a canvas
@@ -68,8 +81,10 @@ function setup() {
     
     createCanvas(width, height);
   
+   
+
     console.log(Koji.config.strings.startingLives);
-    textFont("Cambria");
+    textFont(myFont);
     backgroundImage = loadImage(Koji.config.images.backgroundImage);
     lifeImg = loadImage(Koji.config.images.lifeImage);
     soundImage = loadImage(Koji.config.images.soundButton);
@@ -941,3 +956,14 @@ function toggleSound(){
     
 
 }
+
+
+
+function getFontFamily(ff) {
+    const start = ff.indexOf('family=');
+    if(start === -1) return 'sans-serif';
+    let end = ff.indexOf('&', start);
+    if(end === -1) end = undefined;
+    return ff.slice(start + 7, end);
+}
+

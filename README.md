@@ -23,6 +23,12 @@ How to play:
 - You initially have 3 lives. You lose one by getting hit by an asteroid. 
 - If you destroy an asteroid, there is a chance that another life spawns, collect it to survive -longer and get more points!
 
+
+*IMPORTANT NOTES FOR DESKTOP USERS:
+- Make sure the game tab is set to default zoom (100%)
+- Avoid resizing the browser while playing, if you do it and experience glitches, refresh the page
+
+
 Credits for assets:
 
 Laser sound:

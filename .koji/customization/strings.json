@@ -16,7 +16,9 @@
     "instructions": "Use Mouse or Arrow keys to move,\\nSPACE to shoot",
     "instructions1": "Mouse or Arrow Keys - Move",
     "instructions2": "Click or SPACE - Shoot",
-    "instructions3": "M - Toggle Sound"
+    "instructions3": "M - Toggle Sound",
+    "fontName": "Roboto",
+    "fontFamily": "https://fonts.googleapis.com/css?family=Signika"
   },
   "@@editor": [
     {
@@ -73,6 +75,12 @@
           "key": "scoreIngame",
           "name": "Score in-game",
           "description": "Score label in-game (empty by default, change if you want)",
+          "type": "text"
+        },
+        {
+          "key": "fontFamily",
+          "name": "Font Family",
+          "description": "Google fonts link to font to use on page",
           "type": "text"
         },
         {
