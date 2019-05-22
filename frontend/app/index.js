@@ -51,8 +51,8 @@ let touching = false;
 let touchMode = false; //used to prevent input bugs with keyboard
 
 //our game panel size
-let gameWidth = 640;
-let gameHeight = 480;
+let gameWidth = window.innerWidth;
+let gameHeight = window.innerHeight;
 
 //===Setup the game at start
 function setup() {
