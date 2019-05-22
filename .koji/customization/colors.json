@@ -1,9 +1,13 @@
 {
   "colors": {
     "backgroundColor": "#3f62ae",
-    "textColor": "#ffffff",
-    "gameOverTextColor": "#dc0007",
-    "scoreTextColor": "#fff700"
+    "textColor": "#D8F6FF",
+    "gameOverTextColor": "#FF8100",
+    "scoreTextColor": "#FFD328",
+    "playButtonColor": "#04A8D6",
+    "playButtonTextColor": "#D8F6FF",
+    "titleColor": "#7ae3ff",
+    "instructionsColor": "#5ac4de"
   },
   "@@editor": [
     {
@@ -26,6 +30,26 @@
         {
           "key": "scoreTextColor",
           "name": "Score Text Color",
+          "type": "color"
+        },
+        {
+          "key": "playButtonColor",
+          "name": "Play Button Color",
+          "type": "color"
+        },
+        {
+          "key": "playButtonTextColor",
+          "name": "Play Button Text Color",
+          "type": "color"
+        },
+        {
+          "key": "titleColor",
+          "name": "Title Color",
+          "type": "color"
+        },
+        {
+          "key": "instructionsColor",
+          "name": "Instructions Color",
           "type": "color"
         }
       ]

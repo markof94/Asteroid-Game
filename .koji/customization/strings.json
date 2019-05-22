@@ -11,7 +11,12 @@
     "startingAsteroids": "12",
     "maxLives": "5",
     "scoreGain": "3",
-    "lifeChance": "22"
+    "lifeChance": "22",
+    "title": "Asteroid Shooter!",
+    "instructions": "Use Mouse or Arrow keys to move,\\nSPACE to shoot",
+    "instructions1": "Mouse or Arrow Keys - Move",
+    "instructions2": "Click or SPACE - Shoot",
+    "instructions3": "M - Toggle Sound"
   },
   "@@editor": [
     {
@@ -24,6 +29,26 @@
           "key": "gameOver",
           "name": "Game Over",
           "description": "The text that is displayed when you lose",
+          "type": "text"
+        },
+        {
+          "key": "title",
+          "name": "Game Title",
+          "type": "text"
+        },
+        {
+          "key": "instructions1",
+          "name": "Game Instructions 1",
+          "type": "text"
+        },
+        {
+          "key": "instructions2",
+          "name": "Game Instructions 2",
+          "type": "text"
+        },
+        {
+          "key": "instructions3",
+          "name": "Game Instructions 3",
           "type": "text"
         },
         {

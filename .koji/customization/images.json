@@ -12,7 +12,10 @@
     "asteroidImageSmall3": "https://i.imgur.com/Ka38DPA.png",
     "jetImage": "https://i.imgur.com/0ppxkn4.png",
     "lifeImage": "https://i.imgur.com/JQM4QL5.png",
-    "explosionImage": "https://i.imgur.com/HVW21Vf.png"
+    "explosionImage": "https://i.imgur.com/HVW21Vf.png",
+    "soundButton": "https://i.imgur.com/rWkaqlY.png",
+    "muteButton": "https://i.imgur.com/KcutTk9.png",
+    "playButton": "https://i.imgur.com/exKHyQJ.png"
   },
   "@@editor": [
     {
@@ -91,6 +94,24 @@
           "key": "explosionImage",
           "name": "Explosion",
           "description": "Explosion that happens after an object is destroyed",
+          "type": "image"
+        },
+        {
+          "key": "soundButton",
+          "name": "Sound Button",
+          "description": "A button to turn on sound",
+          "type": "image"
+        },
+        {
+          "key": "muteButton",
+          "name": "Mute Button",
+          "description": "A button to turn off sound",
+          "type": "image"
+        },
+        {
+          "key": "playButton",
+          "name": "Play Button",
+          "description": "A button to start/restart the game",
           "type": "image"
         }
       ]

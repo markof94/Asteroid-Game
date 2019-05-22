@@ -5,6 +5,15 @@
 
 let backgroundImage;
 let lifeImg;
+let soundImage;
+let muteImage;
+let playButtonImage;
+let backgroundMusic;
+
+let soundEnabled = true;
+
+let soundButton;
+let playButton;
 
 //===Game objects===//
 let ship;
@@ -14,6 +23,7 @@ var explosions = [];
 var collectibles = [];
 
 let gameOver = false;
+let gameBeginning = true;
 
 
 
@@ -39,24 +49,35 @@ let lives = 3;
 let touchPos; //touch position for mobile
 let touching = false;
 
+
+//our game panel size
+let gameWidth = 640;
+let gameHeight = 480;
+
 //===Setup the game at start
 function setup() {
     // make a canvas
     //width = window.innerWidth;
     //height = window.innerHeight;
 
-    width = 640;
-    height = 480;
+    width = gameWidth;
+    height = gameHeight;
+    checkGameSize();
+    
     createCanvas(width, height);
   
     console.log(Koji.config.strings.startingLives);
     textFont("Cambria");
     backgroundImage = loadImage(Koji.config.images.backgroundImage);
     lifeImg = loadImage(Koji.config.images.lifeImage);
-    
-    touchPos = createVector(mouseX, mouseY);
+    soundImage = loadImage(Koji.config.images.soundButton);
+    muteImage = loadImage(Koji.config.images.muteButton);
+    playButtonImage = loadImage(Koji.config.images.playButton);
 
-    
+    touchPos = createVector(mouseX, mouseY);
+   
+    soundButton = new SoundButton();
+    playButton = new PlayButton();
 
     ship = new Ship();
 
@@ -67,8 +88,25 @@ function setup() {
         spawnAsteroid();    
     }
 
-    PlaySound(Koji.config.sounds.music, true); //play background music on loop
+
+    playMusic();
+
+
+    window.addEventListener('resize', reportWindowSize);
     
+}
+
+function checkGameSize(){
+    if(window.innerWidth < gameWidth){
+        width = window.innerWidth;
+    }
+    if(window.innerHeight < gameHeight){
+        height = window.innerHeight;
+    }
+}
+
+function reportWindowSize() {
+    checkGameSize();
 }
 
 //Repeating game function
@@ -166,14 +204,15 @@ function draw() {
   }
 
     
-    if(!gameOver){
+    if(!gameOver && !gameBeginning){
         ship.render(); //stop rendering the ship on game over
+        ship.update();
     }
 
 
     //update the ship
     ship.turn();
-    ship.update();
+    
     ship.edges();
     
 
@@ -194,38 +233,70 @@ function draw() {
     }
 
     //Draw UI
-    if(gameOver){
+    if(gameOver || gameBeginning){
 
-        //game over
-        textSize(40);
-        fill(Koji.config.colors.gameOverTextColor);
-        textAlign(CENTER);
-        text(Koji.config.strings.gameOver, width / 2, height / 2 - 24);
+        if(!gameBeginning){
+            //game over
+            textSize(40);
+            fill(Koji.config.colors.gameOverTextColor);
+            textAlign(CENTER);
+            text(Koji.config.strings.gameOver, width / 2, height / 2 - 72);
+        }else{
+            //Title and instructions
+            textSize(32);
+            fill(Koji.config.colors.titleColor);
+            textAlign(CENTER);
+            text(Koji.config.strings.title, width / 2, 120);
+
+            textSize(16);
+            fill(Koji.config.colors.instructionsColor);
+            textAlign(CENTER);
+            text(Koji.config.strings.instructions1, width / 2, height/2 + 90);
+
+            textSize(16);
+            fill(Koji.config.colors.instructionsColor);
+            textAlign(CENTER);
+            text(Koji.config.strings.instructions2, width / 2,  height/2 + 110);
+
+            textSize(16);
+            fill(Koji.config.colors.instructionsColor);
+            textAlign(CENTER);
+            text(Koji.config.strings.instructions3, width / 2, height/2 + 130);
+        }
+       
 
         //press enter to restart
         textSize(16);
         fill(Koji.config.colors.textColor);
         textAlign(CENTER);
-        text(Koji.config.strings.startAgain, width / 2, height / 2);
+        //text(Koji.config.strings.startAgain, width / 2, height / 2);
+
+
+        playButton.render();
+
 
         //game over score
-        textSize(24);
-        fill(Koji.config.colors.textColor);
-        textAlign(CENTER);
-        text(Koji.config.strings.scoreEnd + " " + score,  width / 2, height / 2 + 64);
-
-        if(highScoreGained){
-            //game over score
-            textSize(26);
-            fill(Koji.config.colors.scoreTextColor);
+        if(!gameBeginning){
+            textSize(24);
+            fill(Koji.config.colors.textColor);
             textAlign(CENTER);
-            text(Koji.config.strings.newHighScore,  width / 2, height / 2 + 108);
-        }else{
-            //game over score
-              textSize(22);
-              fill(Koji.config.colors.scoreTextColor);
-              textAlign(CENTER);
-              text("High Score: " + highScore,  width / 2, height / 2 + 108);
+            text(Koji.config.strings.scoreEnd + " " + score,  width / 2, height / 2 + 64);
+        
+      
+
+            if(highScoreGained){
+                //game over score
+                textSize(26);
+                fill(Koji.config.colors.scoreTextColor);
+                textAlign(CENTER);
+                text(Koji.config.strings.newHighScore,  width / 2, height / 2 + 108);
+            }else{
+                //game over score
+                textSize(22);
+                fill(Koji.config.colors.scoreTextColor);
+                textAlign(CENTER);
+                text("High Score: " + highScore,  width / 2, height / 2 + 108);
+            }
         }
 
     }else{
@@ -242,7 +313,9 @@ function draw() {
         
     }
 
+    soundButton.render();
 
+    
 
     //===Draw life icons===//
     for(var i = 0; i < lives; i++){
@@ -256,6 +329,7 @@ function draw() {
 
 //===Keyboard functions
 function keyPressed() {
+
 
     if(!gameOver){
         if (key == ' ') { //space
@@ -275,13 +349,19 @@ function keyPressed() {
             init(); //restart the game
         }
     }
- 
-}
+
+    if (key == 'm') { //toggle sound
+            toggleSound();
+        }
+    
+    }
 
 function keyReleased() {
     if (keyCode == RIGHT_ARROW ||keyCode == LEFT_ARROW){
         ship.isTurning = false;
-    }else if(keyCode == UP_ARROW){
+    }
+    
+    if(keyCode == UP_ARROW){
         ship.boosting(false);
     }
  
@@ -291,11 +371,21 @@ function keyReleased() {
 
 //===Handle mouse/touch===//
 function touchStarted(){
-    touching = true;
 
-    if(gameOver){
-        init();
+
+    if(gameOver || gameBeginning){
+        if(playButton.checkClick()){
+            init();
+        }
+       
     }
+
+   if(soundButton.checkClick()){
+       toggleSound();
+        
+   }else{
+       touching = true;
+   }
 }
 
 function touchEnded(){
@@ -323,6 +413,7 @@ function init(){
 
     score = 0; 
     highScoreGained = false;
+    gameBeginning = false;
 }
 
 
@@ -703,6 +794,82 @@ function LifeCollectible() {
 
 }
 
+function SoundButton(){
+    this.pos = createVector(50, 50);
+    this.size = createVector(32, 32);
+
+    
+    this.render = function(){
+        this.pos.x = width - this.size.x - 10;
+        this.pos.y = 10;
+
+        let img;
+        if(soundEnabled){
+            img = soundImage;
+        }else{
+            img = muteImage;
+        }
+
+        image(img, this.pos.x, this.pos.y, this.size.x, this.size.y); //draw
+    }
+
+    this.checkClick = function(){
+        
+        if(mouseX >= this.pos.x && 
+            mouseX <= this.pos.x + this.size.x &&
+            mouseY >= this.pos.y && 
+            mouseY <= this.pos.y + this.size.y){
+            return true;
+        }else{
+            return false;
+        }
+    }
+
+}
+
+
+function PlayButton(){
+    this.size = createVector(150, 50);
+    this.pos = createVector(width/2 - this.size.x/2, height/2 - this.size.y/2 + 24);
+   
+ 
+    this.img = playButtonImage;
+    
+   
+
+    this.label = "Play";
+
+    this.render = function(){
+        this.pos.x = width/2 - this.size.x/2;
+        this.pos.y = height/2 - this.size.y/2;
+        
+        //image(this.img, this.pos.x, this.pos.y, this.size.x, this.size.y); //draw
+
+        fill(Koji.config.colors.playButtonColor);
+        rect(this.pos.x, this.pos.y, this.size.x, this.size.y, 15);
+
+
+        textSize(32);
+        fill(Koji.config.colors.playButtonTextColor);
+        textAlign(CENTER, CENTER);
+        text("PLAY", this.pos.x + this.size.x/2, this.pos.y + this.size.y/2);
+        
+    }
+
+    this.checkClick = function(){
+        
+        if(mouseX >= this.pos.x && 
+            mouseX <= this.pos.x + this.size.x &&
+            mouseY >= this.pos.y && 
+            mouseY <= this.pos.y + this.size.y){
+            return true;
+        }else{
+            return false;
+        }
+    }
+
+}
+
 //===Function used for smoothing values
 function smoothFactor(value, goal, factor){
     return value + (goal - value) * factor;
@@ -711,7 +878,39 @@ function smoothFactor(value, goal, factor){
 
 //===Used for playing any sound
 PlaySound = function (src, loop) {
-    var audio = new Audio(src);
-    audio.loop = loop;
-    audio.play(); 
+    if(soundEnabled){
+        var audio = new Audio(src);
+        audio.loop = loop;
+        audio.play(); 
+    }
+   
+}
+
+function playMusic(){
+    if(!backgroundMusic){
+        backgroundMusic = new Audio(Koji.config.sounds.music);
+    }
+    
+    backgroundMusic.loop = loop;
+    backgroundMusic.play(); 
+}
+
+function disableSound(){
+    backgroundMusic.pause();
+    backgroundMusic.currentTime = 0;
+    soundEnabled = false;
+}
+
+function enableSound(){
+    soundEnabled = true;
+    playMusic();
+}
+
+function toggleSound(){
+    if(soundEnabled){
+        disableSound();
+    }else{
+        enableSound();
+    }
+
 }
