@@ -48,7 +48,7 @@ let lives = 3;
 
 let touchPos; //touch position for mobile
 let touching = false;
-
+let touchMode = false; //used to prevent input bugs with keyboard
 
 //our game panel size
 let gameWidth = 640;
@@ -337,12 +337,15 @@ function keyPressed() {
         } else if (keyCode == RIGHT_ARROW) { //rotate right
             ship.setRotation(1);
             ship.isTurning = true;
+            touchMode = false;
         } else if (keyCode == LEFT_ARROW) { //rotate left
             ship.setRotation(-1);
             ship.isTurning = true;
+            touchMode = false;
         } 
         if (keyCode == UP_ARROW) { //boost the ship
             ship.boosting(true);
+            touchMode = false;
         }
     }else{
         if (keyCode == ENTER){
@@ -372,6 +375,7 @@ function keyReleased() {
 //===Handle mouse/touch===//
 function touchStarted(){
 
+    touchMode = true;
 
     if(gameOver || gameBeginning){
         if(playButton.checkClick()){
@@ -389,8 +393,11 @@ function touchStarted(){
 }
 
 function touchEnded(){
+    if(touchMode){
     touching = false;
     ship.fireTimer = 0; //reset timer to prevent next shot delay
+    }
+   
 }
 
 //===Function for resetting the game
@@ -501,7 +508,10 @@ function Ship() {
             }
             
         }else{
-            this.boosting(false);
+            if(touchMode){
+                this.boosting(false);
+            }
+            
         }
         
         
