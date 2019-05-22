@@ -97,12 +97,16 @@ function setup() {
 }
 
 function checkGameSize(){
+    width = window.innerWidth;
+    height = window.innerHeight;
+    /*
     if(window.innerWidth < gameWidth){
         width = window.innerWidth;
     }
     if(window.innerHeight < gameHeight){
         height = window.innerHeight;
     }
+    */
 }
 
 function reportWindowSize() {
