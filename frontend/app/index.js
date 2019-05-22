@@ -15,7 +15,7 @@ let soundEnabled = true;
 let soundButton;
 let playButton;
 
-//===Game objects===//
+//===Game objects===///
 let ship;
 var lasers = [];
 var asteroids = [];
